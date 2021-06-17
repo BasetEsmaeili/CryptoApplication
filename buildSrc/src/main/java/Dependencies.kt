@@ -46,11 +46,9 @@ object Dependencies {
     }
 
     object Project {
-        const val applicationId = "me.diver.android"
-        const val applicationIdIranianStore = "ir.diver.android"
-        const val versionCode = 121
-        const val debug_version_name = "2.0.1"
-        const val production_version_name = "2.0.0"
+        const val applicationId = "com.baset.crypto.trader"
+        const val versionCode = 1
+        const val versionName = "1.0.0"
         const val isMinifyEnabled = true
         const val isProguardUploadEnabled = true
         const val isZipAlignEnabled = true
