@@ -1,2 +1,2 @@
 rootProject.name = "CryptoTrader"
-include ':app'
+include (":app")
