@@ -14,4 +14,8 @@ dependencies {
     implementation(Dependencies.Kotlin.coroutines)
     implementation(Dependencies.Dagger.dagger)
     implementation(Dependencies.Dagger.dagger_compiler)
+    testImplementation(Dependencies.TestDevelopment.junit)
+    testImplementation(Dependencies.TestDevelopment.coroutines_test)
+    testImplementation(Dependencies.TestDevelopment.mockito_kotlin)
+    testImplementation(Dependencies.TestDevelopment.truth)
 }

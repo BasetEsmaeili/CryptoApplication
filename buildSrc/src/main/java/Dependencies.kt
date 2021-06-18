@@ -8,7 +8,6 @@ object Dependencies {
     private const val ktx_version = "1.6.0-rc01"
     private const val fragment_version = "1.4.0-alpha03"
     private const val test_rules_version = "1.1.0"
-    private const val databinding_version = "3.6.0-alpha10"
     private const val junit_ext_version = "1.1.1"
     private const val espresso_version = "3.3.0"
     private const val junit_version = "4.12"
@@ -93,6 +92,7 @@ object Dependencies {
         const val navigationSafeArgs = "androidx.navigation.safeargs"
         const val serialization = "kotlinx-serialization"
         const val javaLibrary = "java-library"
+        const val androidLibrary = "com.android.library"
     }
 
     object Repositories {
@@ -104,7 +104,6 @@ object Dependencies {
         const val appCompat = "androidx.appcompat:appcompat:$appCompat_version"
         const val legacy = "androidx.legacy:legacy-support-v4:$legacy_version"
         const val fragment = "androidx.fragment:fragment-ktx:$fragment_version"
-        const val databinding_compiler = "com.android.databinding:compiler:$databinding_version"
         const val recyclerview = "androidx.recyclerview:recyclerview:$recyclerview_version"
     }
 
@@ -135,13 +134,13 @@ object Dependencies {
         const val truth = "com.google.truth:truth:$truth_version"
         const val arch_core_test = "androidx.arch.core:core-testing:$core_test_version"
         const val coroutines_test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_test_version"
-        const val mockito_kotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
+        const val mockito_kotlin = "org.mockito.kotlin:mockito-kotlin:$mockito_kotlin_version"
     }
 
     object ThirdParty {
         const val lottie = "com.airbnb.android:lottie:$lottie_version"
         const val timber = "com.jakewharton.timber:timber:$timber_version"
-        const val persian_date = "com.github.samanzamani.persiandate:PersianDate:$persian_date_version"
+        const val persian_date = "com.github.samanzamani:PersianDate:$persian_date_version"
         const val leakcanary = "com.squareup.leakcanary:leakcanary-android:$leakcanary_version"
         const val glide = "com.github.bumptech.glide:glide:$glide_version"
         const val glide_compiler = "com.github.bumptech.glide:compiler:$glide_version"

@@ -83,7 +83,6 @@ dependencies {
     implementation(Dependencies.AndroidSupport.legacy)
     implementation(Dependencies.AndroidSupport.fragment)
     implementation(Dependencies.AndroidSupport.recyclerview)
-    kapt(Dependencies.AndroidSupport.databinding_compiler)
     implementation(Dependencies.Design.material)
     implementation(Dependencies.Design.constraint_layout)
     implementation(Dependencies.ArchitectureComponents.core_ktx)
