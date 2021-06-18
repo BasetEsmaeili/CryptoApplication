@@ -9,12 +9,17 @@ import com.baset.crypto.domain.entity.params.TagFilterType
 import kotlinx.coroutines.flow.Flow
 
 interface CryptoRepository {
-    fun getCryptocurrencies(
+    suspend fun getCryptocurrencies(
         page: Int,
         pageLimit: Int,
+    ): Resource<List<CryptocurrencyEntity?>>
+
+    fun getCryptocurrencies(
         sortBy: CryptocurrencySortType,
         sortDirection: SortDirection,
         cryptocurrencyType: CryptocurrencyFilterType,
         tagType: TagFilterType
-    ): Flow<Resource<List<CryptocurrencyEntity>>>
+    ): Flow<List<CryptocurrencyEntity?>?>
+
+    suspend fun insertCryptocurrencies(cryptocurrencies: List<CryptocurrencyEntity?>)
 }
