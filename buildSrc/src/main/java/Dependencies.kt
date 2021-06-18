@@ -92,6 +92,7 @@ object Dependencies {
         const val kapt = "kapt"
         const val navigationSafeArgs = "androidx.navigation.safeargs"
         const val serialization = "kotlinx-serialization"
+        const val javaLibrary = "java-library"
     }
 
     object Repositories {
