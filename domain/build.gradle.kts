@@ -1,6 +1,7 @@
 plugins {
     id(Dependencies.Plugins.javaLibrary)
     id(Dependencies.Plugins.kotlin)
+    kotlin(Dependencies.Plugins.kapt)
 }
 
 java {
@@ -11,4 +12,6 @@ java {
 dependencies {
     implementation(Dependencies.Kotlin.kotlinStd)
     implementation(Dependencies.Kotlin.coroutines)
+    implementation(Dependencies.Dagger.dagger)
+    implementation(Dependencies.Dagger.dagger_compiler)
 }
