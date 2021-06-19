@@ -9,5 +9,6 @@ data class QuoteTypeEntity(
     val percentChange30d: Double,
     val percentChange60d: Double,
     val percentChange90d: Double,
-    val coinMarketRank: Double
+    val coinMarketRank: Double,
+    val lastUpdated: String
 )

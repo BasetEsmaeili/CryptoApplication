@@ -52,7 +52,8 @@ fun createQuoteTypeEntity(
     percentChange30d: Double = -7.14301848,
     percentChange60d: Double = 4.97958927,
     percentChange90d: Double = 21.33946819,
-    coinMarketRank: Double = 262040732349.9464
+    coinMarketRank: Double = 262040732349.9464,
+    lastUpdated: String = "2018-06-02T22:51:28.209Z"
 ): QuoteTypeEntity {
     return QuoteTypeEntity(
         price,
@@ -63,6 +64,7 @@ fun createQuoteTypeEntity(
         percentChange30d,
         percentChange60d,
         percentChange90d,
-        coinMarketRank
+        coinMarketRank,
+        lastUpdated
     )
 }

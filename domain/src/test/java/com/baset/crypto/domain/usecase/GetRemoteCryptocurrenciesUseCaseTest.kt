@@ -1,7 +1,9 @@
 package com.baset.crypto.domain.usecase
 
 import com.baset.crypto.domain.createCryptocurrencyEntity
-import com.baset.crypto.domain.entity.Resource
+import com.baset.crypto.domain.entity.CryptocurrencyEntity
+import com.baset.crypto.domain.entity.ErrorEntity
+import com.baset.crypto.domain.entity.Result
 import com.baset.crypto.domain.entity.Status
 import com.baset.crypto.domain.entity.params.GetRemoteCryptocurrenciesParams
 import com.baset.crypto.domain.repository.CryptoRepository
@@ -33,7 +35,7 @@ class GetRemoteCryptocurrenciesUseCaseTest {
 
     @Test
     fun invokeGetRemoteCryptocurrenciesUseCaseReturnsSuccessStatusIfSuccess() = runBlockingTest {
-        val successResponse = Resource.success("Operation Complete", listOf(createCryptocurrencyEntity()), 200)
+        val successResponse = Result.success(listOf(createCryptocurrencyEntity()))
         whenever(repo.getCryptocurrencies(1, 20)).thenReturn(successResponse)
         val result = useCase(GetRemoteCryptocurrenciesParams())
         assertThat(result.status).isEqualTo(Status.SUCCESS)
@@ -41,7 +43,7 @@ class GetRemoteCryptocurrenciesUseCaseTest {
 
     @Test
     fun invokeGetRemoteCryptocurrenciesUseCaseReturnsErrorStatusIfErrorOccurred() = runBlockingTest {
-        val errorResponse = Resource.error("Operation Error", null, 401)
+        val errorResponse = Result.error<List<CryptocurrencyEntity>>( ErrorEntity.ApiError.InternalServerError)
         whenever(repo.getCryptocurrencies(1, 20)).thenReturn(errorResponse)
         val result = useCase(GetRemoteCryptocurrenciesParams())
         assertThat(result.status).isEqualTo(Status.ERROR)
@@ -50,7 +52,7 @@ class GetRemoteCryptocurrenciesUseCaseTest {
     @Test
     fun invokeGetRemoteCryptocurrenciesUseCaseReturnsDataIfSuccess() = runBlockingTest {
         val exceptedResponse = listOf(createCryptocurrencyEntity())
-        val successResponse = Resource.success("Operation Complete", exceptedResponse, 200)
+        val successResponse = Result.success(exceptedResponse)
         whenever(repo.getCryptocurrencies(1, 20)).thenReturn(successResponse)
         val result = useCase(GetRemoteCryptocurrenciesParams())
         assertThat(result.data).isEqualTo(exceptedResponse)
@@ -58,9 +60,26 @@ class GetRemoteCryptocurrenciesUseCaseTest {
 
     @Test
     fun invokeGetRemoteCryptocurrenciesUseCaseDataIsNullIfErrorOccurred() = runBlockingTest {
-        val errorResponse = Resource.error("Operation Complete", null, 200)
+        val errorResponse = Result.error<List<CryptocurrencyEntity>>(ErrorEntity.ApiError.InternalServerError)
         whenever(repo.getCryptocurrencies(1, 20)).thenReturn(errorResponse)
         val result = useCase(GetRemoteCryptocurrenciesParams())
         assertThat(result.data).isNull()
+    }
+
+    @Test
+    fun invokeGetRemoteCryptocurrenciesUseCaseErrorTypeMustBeNullIfSuccess() = runBlockingTest {
+        val exceptedResponse = listOf(createCryptocurrencyEntity())
+        val successResponse = Result.success(exceptedResponse)
+        whenever(repo.getCryptocurrencies(1, 20)).thenReturn(successResponse)
+        val result = useCase(GetRemoteCryptocurrenciesParams())
+        assertThat(result.errorType).isNull()
+    }
+
+    @Test
+    fun invokeGetRemoteCryptocurrenciesUseCaseErrorTypeMustNotBeNullIfErrorOccurred() = runBlockingTest {
+        val errorResponse = Result.error<List<CryptocurrencyEntity>>( ErrorEntity.ApiError.InternalServerError)
+        whenever(repo.getCryptocurrencies(1, 20)).thenReturn(errorResponse)
+        val result = useCase(GetRemoteCryptocurrenciesParams())
+        assertThat(result.errorType).isNotNull()
     }
 }
