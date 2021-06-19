@@ -1,10 +1,10 @@
 plugins {
-    id(Dependencies.Plugins.androidApplication)
+    id(Dependencies.Plugins.androidLibrary)
+    id(Dependencies.Plugins.serialization)
     kotlin(Dependencies.Plugins.android)
-    kotlin(Dependencies.Plugins.androidExtensions)
     kotlin(Dependencies.Plugins.kapt)
-    id(Dependencies.Plugins.navigationSafeArgs)
 }
+
 android {
     compileSdkVersion(Dependencies.Android.compileSdkVersion)
     buildToolsVersion(Dependencies.Android.buildToolsVersion)
@@ -12,16 +12,18 @@ android {
     defaultConfig {
         minSdkVersion(Dependencies.Android.minSdkVersion)
         targetSdkVersion(Dependencies.Android.targetSdkVersion)
-        applicationId = Dependencies.Project.applicationId
         versionCode = Dependencies.Project.versionCode
         versionName = Dependencies.Project.versionName
         testInstrumentationRunner = Dependencies.Project.testInstrumentationRunner
-        vectorDrawables.useSupportLibrary = Dependencies.Project.isUseVectorDrawables
     }
 
     lintOptions {
         isCheckReleaseBuilds = Dependencies.Project.isLinkCheckEnabled
         isAbortOnError = Dependencies.Project.isLinkCheckEnabled
+    }
+
+    testOptions {
+        unitTests.isReturnDefaultValues = true
     }
 
     dexOptions {
@@ -31,21 +33,14 @@ android {
         threadCount = 8
     }
 
-    testOptions {
-        unitTests.isReturnDefaultValues = true
-    }
-
     buildTypes {
         getByName(Dependencies.BuildVariants.release) {
             isMinifyEnabled = Dependencies.Project.isMinifyEnabled
-            isZipAlignEnabled = Dependencies.Project.isZipAlignEnabled
-            isShrinkResources = Dependencies.Project.isShrinkResourcesEnabled
             isJniDebuggable = Dependencies.Project.isJniDebugEnabled
             proguardFiles(
                 getDefaultProguardFile(Dependencies.ProGuards.proguardAndroidOptimize),
                 Dependencies.ProGuards.proguards
             )
-            multiDexKeepProguard = file(Dependencies.ProGuards.multidexProguards)
         }
         getByName(Dependencies.BuildVariants.debug) {
             isMinifyEnabled = false
@@ -53,9 +48,6 @@ android {
         }
     }
 
-    buildFeatures {
-        dataBinding = Dependencies.Project.isDataBindingEnabled
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -72,26 +64,12 @@ android {
     kapt {
         correctErrorTypes = Dependencies.Project.isCorrectErrorTypes
     }
-
 }
+
 dependencies {
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Dependencies.Kotlin.kotlinStd)
     implementation(Dependencies.Kotlin.coroutines)
-    implementation(Dependencies.Kotlin.coroutines_android)
-    implementation(Dependencies.AndroidSupport.appCompat)
-    implementation(Dependencies.AndroidSupport.legacy)
-    implementation(Dependencies.AndroidSupport.fragment)
-    implementation(Dependencies.AndroidSupport.recyclerview)
-    implementation(Dependencies.Design.material)
-    implementation(Dependencies.Design.constraint_layout)
-    implementation(Dependencies.ArchitectureComponents.core_ktx)
-    implementation(Dependencies.ArchitectureComponents.lifecycle_runtime)
-    implementation(Dependencies.ArchitectureComponents.liveData_extensions)
-    implementation(Dependencies.ArchitectureComponents.viewModel)
-    implementation(Dependencies.ArchitectureComponents.navigation_fragment)
-    implementation(Dependencies.ArchitectureComponents.navigation_ui)
-    implementation(Dependencies.ArchitectureComponents.work_manager)
+    implementation(Dependencies.Kotlin.serialization)
     androidTestImplementation(Dependencies.TestDevelopment.test_runner)
     androidTestImplementation(Dependencies.TestDevelopment.test_rules)
     androidTestImplementation(Dependencies.TestDevelopment.espresso)
@@ -107,12 +85,15 @@ dependencies {
     testImplementation(Dependencies.TestDevelopment.truth)
     testImplementation(Dependencies.TestDevelopment.arch_core_test)
     testImplementation(Dependencies.TestDevelopment.coroutines_test)
-    implementation(Dependencies.ThirdParty.lottie)
+    testImplementation(Dependencies.TestDevelopment.mockito_kotlin)
     implementation(Dependencies.ThirdParty.timber)
-    implementation(Dependencies.ThirdParty.persian_date)
-    debugImplementation(Dependencies.ThirdParty.leakcanary)
     implementation(Dependencies.Dagger.dagger)
     kapt(Dependencies.Dagger.dagger_compiler)
-    implementation(Dependencies.ThirdParty.glide)
-    kapt(Dependencies.ThirdParty.glide_compiler)
+    implementation(Dependencies.OkHttp.okhttp)
+    implementation(Dependencies.Retrofit.retrofit)
+    implementation(Dependencies.Retrofit.serialization_converter)
+    implementation(Dependencies.ArchitectureComponents.room_runtime)
+    implementation(Dependencies.ArchitectureComponents.room_ktx)
+    kapt(Dependencies.ArchitectureComponents.room_compiler)
+    implementation(project(Dependencies.Modules.domain))
 }
