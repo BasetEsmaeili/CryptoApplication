@@ -173,4 +173,10 @@ object Dependencies {
         const val debug = "debug"
         const val release = "release"
     }
+
+    object Modules {
+        const val domain = ":domain"
+        const val data = ":data"
+        const val app = ":app"
+    }
 }

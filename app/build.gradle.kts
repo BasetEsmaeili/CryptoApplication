@@ -91,6 +91,7 @@ dependencies {
     implementation(Dependencies.ArchitectureComponents.viewModel)
     implementation(Dependencies.ArchitectureComponents.navigation_fragment)
     implementation(Dependencies.ArchitectureComponents.navigation_ui)
+    implementation(Dependencies.ArchitectureComponents.work_manager)
     androidTestImplementation(Dependencies.TestDevelopment.test_runner)
     androidTestImplementation(Dependencies.TestDevelopment.test_rules)
     androidTestImplementation(Dependencies.TestDevelopment.espresso)
