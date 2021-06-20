@@ -1,4 +1,4 @@
-package com.baset.crypto.data.utils
+package com.baset.crypto.data.utils.network
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer

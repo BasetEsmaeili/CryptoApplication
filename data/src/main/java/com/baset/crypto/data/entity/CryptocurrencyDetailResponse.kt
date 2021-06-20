@@ -5,7 +5,7 @@ import com.baset.crypto.data.common.DataConstants.RemoteSerialNames.IS_HIDDEN
 import com.baset.crypto.data.common.DataConstants.RemoteSerialNames.TAG_GROUPS
 import com.baset.crypto.data.common.DataConstants.RemoteSerialNames.TAG_NAMES
 import com.baset.crypto.data.common.DataConstants.RemoteSerialNames.TWITTER_USER_NAME
-import com.baset.crypto.data.utils.ByteToBooleanSerializer
+import com.baset.crypto.data.utils.network.ByteToBooleanSerializer
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
