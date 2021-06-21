@@ -5,8 +5,8 @@ package com.baset.crypto.domain.base
  */
 abstract class BaseUseCase<out Result, in Params> {
     protected abstract suspend fun create(
-        params: Params? = null
+        params: Params?
     ): Result
 
-    suspend operator fun invoke(params: Params?) = create(params)
+    suspend operator fun invoke(params: Params? = null) = create(params)
 }

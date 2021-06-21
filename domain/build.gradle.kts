@@ -13,7 +13,7 @@ dependencies {
     implementation(Dependencies.Kotlin.kotlinStd)
     implementation(Dependencies.Kotlin.coroutines)
     implementation(Dependencies.Dagger.dagger)
-    implementation(Dependencies.Dagger.dagger_compiler)
+    kapt(Dependencies.Dagger.dagger_compiler)
     testImplementation(Dependencies.TestDevelopment.junit)
     testImplementation(Dependencies.TestDevelopment.coroutines_test)
     testImplementation(Dependencies.TestDevelopment.mockito_kotlin)
