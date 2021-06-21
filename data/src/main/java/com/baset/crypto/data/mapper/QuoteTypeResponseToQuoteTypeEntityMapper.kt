@@ -10,30 +10,14 @@ class QuoteTypeResponseToQuoteTypeEntityMapper @Inject constructor() :
     override fun mapToEntity(entity: QuoteTypeEntity): QuoteTypeResponse {
         return QuoteTypeResponse(
             entity.price,
-            entity.volume24h,
-            entity.percentChange1h,
-            entity.percentChange24h,
-            entity.percentChange7d,
-            entity.percentChange30d,
-            entity.percentChange60d,
-            entity.percentChange90d,
-            entity.coinMarketRank,
-            entity.lastUpdated
+            entity.percentChange24h
         )
     }
 
     override fun mapFromEntity(entity: QuoteTypeResponse): QuoteTypeEntity {
         return QuoteTypeEntity(
             entity.price,
-            entity.volume24h,
-            entity.percentChange1h,
             entity.percentChange24h,
-            entity.percentChange7d,
-            entity.percentChange30d,
-            entity.percentChange60d,
-            entity.percentChange90d,
-            entity.coinMarketRank,
-            entity.lastUpdated
         )
     }
 }

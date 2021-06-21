@@ -6,24 +6,14 @@ import com.baset.crypto.domain.entity.CryptocurrencyEntity
 import javax.inject.Inject
 
 class CryptocurrencyResponseToCryptocurrencyEntityMapper @Inject constructor(
-    private val quoteMapper: QuoteResponseToQuoteEntityMapper,
-    private val platformMapper: PlatformResponseToPlatformEntityMapper
+    private val quoteMapper: QuoteResponseToQuoteEntityMapper
 ) : EntityMapper<CryptocurrencyResponse, CryptocurrencyEntity> {
     override fun mapToEntity(entity: CryptocurrencyEntity): CryptocurrencyResponse {
         return CryptocurrencyResponse(
             entity.id,
             entity.name,
             entity.symbol,
-            entity.slug,
-            entity.numberOfMarketPairs,
-            entity.dateAdded,
-            entity.tags,
-            entity.maxSupply,
-            entity.circulatingSupply,
-            entity.totalSupply,
-            platformMapper.mapToEntity(entity.platform),
             entity.coinMarketRank,
-            entity.lastUpdated,
             quoteMapper.mapToEntity(entity.quote)
         )
     }
@@ -33,16 +23,7 @@ class CryptocurrencyResponseToCryptocurrencyEntityMapper @Inject constructor(
             entity.id,
             entity.name,
             entity.symbol,
-            entity.slug,
-            entity.numberOfMarketPairs,
-            entity.dateAdded,
-            entity.tags,
-            entity.maxSupply,
-            entity.circulatingSupply,
-            entity.totalSupply,
-            platformMapper.mapFromEntity(entity.platform),
             entity.coinMarketRank,
-            entity.lastUpdated,
             quoteMapper.mapFromEntity(entity.quote)
         )
     }
