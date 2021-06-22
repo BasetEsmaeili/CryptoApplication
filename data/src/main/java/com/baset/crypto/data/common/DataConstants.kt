@@ -1,6 +1,10 @@
 package com.baset.crypto.data.common
 
 object DataConstants {
+
+    object Authentication {
+        const val KEY_API_KEY = "X-CMC_PRO_API_KEY"
+    }
     object RemoteSerialNames {
         const val DATE_ADDED = "date_added"
         const val TWITTER_USER_NAME = "twitter_username"

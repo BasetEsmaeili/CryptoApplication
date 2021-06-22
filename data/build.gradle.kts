@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     id(Dependencies.Plugins.androidLibrary)
     id(Dependencies.Plugins.serialization)
@@ -15,6 +17,8 @@ android {
         versionCode = Dependencies.Project.versionCode
         versionName = Dependencies.Project.versionName
         testInstrumentationRunner = Dependencies.Project.testInstrumentationRunner
+        val api_key = gradleLocalProperties(rootDir).getProperty("api_key")
+        buildConfigField("String", "API_KEY", "\"$api_key\"")
     }
 
     lintOptions {
