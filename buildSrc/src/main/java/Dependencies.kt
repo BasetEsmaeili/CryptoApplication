@@ -89,7 +89,7 @@ object Dependencies {
         const val androidExtensions = "android.extensions"
         const val kotlin = "kotlin"
         const val kapt = "kapt"
-        const val navigationSafeArgs = "androidx.navigation.safeargs"
+        const val navigationSafeArgs = "androidx.navigation.safeargs.kotlin"
         const val serialization = "kotlinx-serialization"
         const val javaLibrary = "java-library"
         const val androidLibrary = "com.android.library"
