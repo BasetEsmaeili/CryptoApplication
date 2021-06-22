@@ -1,8 +1,9 @@
 package com.baset.crypto.data.di.local
 
-import com.baset.crypto.data.di.context.ContextComponent
+import android.content.Context
 import com.baset.crypto.data.source.local.CryptoDAO
 import com.baset.crypto.data.source.local.CryptoDatabase
+import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Scope
 
@@ -10,7 +11,7 @@ import javax.inject.Scope
 @Retention(AnnotationRetention.RUNTIME)
 annotation class LocalStorageScope
 
-@Component(modules = [LocalStorageModule::class], dependencies = [ContextComponent::class])
+@Component(modules = [LocalStorageModule::class])
 @LocalStorageScope
 interface LocalStorageComponent {
     fun provideCryptoDatabase(): CryptoDatabase
@@ -18,6 +19,6 @@ interface LocalStorageComponent {
 
     @Component.Factory
     interface Factory {
-        fun create(contextComponent: ContextComponent): LocalStorageComponent
+        fun create(@BindsInstance context: Context): LocalStorageComponent
     }
 }

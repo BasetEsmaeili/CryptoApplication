@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CryptoTrader</string>
+    <string name="error_during_action">خطا در انجام عملیات</string>
 </resources>

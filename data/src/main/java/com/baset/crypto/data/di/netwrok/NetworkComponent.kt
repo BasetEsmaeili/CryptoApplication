@@ -1,10 +1,11 @@
 package com.baset.crypto.data.di.netwrok
 
-import com.baset.crypto.data.di.context.ContextComponent
+import android.content.Context
 import com.baset.crypto.data.utils.network.AuthInterceptor
 import com.baset.crypto.data.utils.network.NetworkCheckInterceptor
 import com.baset.crypto.data.utils.network.NetworkManager
 import com.baset.crypto.data.utils.network.ResponseHandler
+import dagger.BindsInstance
 import dagger.Component
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -15,7 +16,7 @@ import javax.inject.Scope
 annotation class NetworkScope
 
 @NetworkScope
-@Component(modules = [NetworkModule::class], dependencies = [ContextComponent::class])
+@Component(modules = [NetworkModule::class])
 interface NetworkComponent {
     fun provideRetrofit(): Retrofit
     fun provideOkHttp(): OkHttpClient
@@ -26,6 +27,6 @@ interface NetworkComponent {
 
     @Component.Factory
     interface Factory {
-        fun create(contextComponent: ContextComponent): NetworkComponent
+        fun create(@BindsInstance context: Context): NetworkComponent
     }
 }
