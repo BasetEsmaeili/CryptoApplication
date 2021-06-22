@@ -2,9 +2,14 @@ package com.baset.crypto.data.common
 
 object DataConstants {
 
+    object NetworkConfig {
+        const val BASE_URL = "https://pro-api.coinmarketcap.com/v1/"
+    }
+
     object Authentication {
         const val KEY_API_KEY = "X-CMC_PRO_API_KEY"
     }
+
     object RemoteSerialNames {
         const val DATE_ADDED = "date_added"
         const val TWITTER_USER_NAME = "twitter_username"
@@ -17,6 +22,7 @@ object DataConstants {
     }
 
     object TableNames {
+        const val DATABASE_NAME = "crypto.db"
         const val TABLE_CRYPTO_DETAILS = "cryptocurrency_detail"
         const val TABLE_CRYPTO = "cryptocurrencies"
     }
