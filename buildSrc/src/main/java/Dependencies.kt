@@ -167,6 +167,10 @@ object Dependencies {
 
     object Excludes {
         const val coroutines_debug = "DebugProbesKt.bin"
+        const val meta_inf_2 = "META-INF/AL2.0"
+        const val meta_inf_2_1 = "META-INF/LGPL2.1"
+        const val attach_hotspot_windows = "**/attach_hotspot_windows.dll"
+        const val licenses = "META-INF/licenses/**"
     }
 
     object BuildVariants {

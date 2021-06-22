@@ -58,4 +58,8 @@ class CryptoRepositoryImpl @Inject constructor(
     override fun getLocalCryptocurrencyDetail(id: Int): Flow<CryptocurrencyDetailEntity?> {
         return localDataSource.getCryptocurrencyDetail(id)
     }
+
+    override suspend fun clearCryptocurrencies() {
+        localDataSource.clearCryptocurrencies()
+    }
 }

@@ -13,4 +13,6 @@ interface CryptoLocalDataSource {
     suspend fun insertCryptocurrencyDetail(cryptocurrencyDetail: CryptocurrencyDetailEntity)
 
     fun getCryptocurrencyDetail(id: Int): Flow<CryptocurrencyDetailEntity?>
+
+    suspend fun clearCryptocurrencies()
 }

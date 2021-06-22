@@ -29,4 +29,8 @@ class CryptoRoomImplDataSource @Inject constructor(
     override fun getCryptocurrencyDetail(id: Int): Flow<CryptocurrencyDetailEntity?> {
         return cryptoDAO.getCryptocurrencyDetail(id).map { cryptoDetailMapper.mapFromEntity(it) }
     }
+
+    override suspend fun clearCryptocurrencies() {
+        cryptoDAO.clearCryptocurrencies()
+    }
 }

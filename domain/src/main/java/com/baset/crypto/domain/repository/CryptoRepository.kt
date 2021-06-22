@@ -24,4 +24,6 @@ interface CryptoRepository {
     suspend fun getRemoteCryptocurrencyDetail(id: Int): Result<CryptocurrencyDetailEntity>
 
     fun getLocalCryptocurrencyDetail(id: Int): Flow<CryptocurrencyDetailEntity?>
+
+    suspend fun clearCryptocurrencies()
 }

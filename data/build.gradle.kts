@@ -59,6 +59,10 @@ android {
 
     packagingOptions {
         exclude(Dependencies.Excludes.coroutines_debug)
+        exclude(Dependencies.Excludes.meta_inf_2)
+        exclude(Dependencies.Excludes.meta_inf_2_1)
+        exclude(Dependencies.Excludes.attach_hotspot_windows)
+        exclude(Dependencies.Excludes.licenses)
     }
 
     kapt {
@@ -70,6 +74,7 @@ dependencies {
     implementation(Dependencies.Kotlin.kotlinStd)
     implementation(Dependencies.Kotlin.coroutines)
     implementation(Dependencies.Kotlin.serialization)
+    implementation(Dependencies.ArchitectureComponents.liveData_extensions)
     androidTestImplementation(Dependencies.TestDevelopment.test_runner)
     androidTestImplementation(Dependencies.TestDevelopment.test_rules)
     androidTestImplementation(Dependencies.TestDevelopment.espresso)

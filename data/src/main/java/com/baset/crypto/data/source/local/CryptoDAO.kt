@@ -68,4 +68,11 @@ interface CryptoDAO {
 
     @Query("select exists (select * from cryptocurrency_detail WHERE id = :id LIMIT 1)")
     suspend fun alreadyExistsCryptocurrencyDetail(id: Long): Boolean
+
+    /**
+     * Delete
+     */
+
+    @Query("delete from cryptocurrencies")
+    suspend fun clearCryptocurrencies()
 }

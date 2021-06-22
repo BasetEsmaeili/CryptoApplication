@@ -118,4 +118,11 @@ class CryptoRepositoryImplTest {
         verify(localDataSource).getCryptocurrencyDetail(1)
         verifyNoMoreInteractions(localDataSource)
     }
+
+    @Test
+    fun clearCryptocurrenciesCallsLocalDataSource() = runBlockingTest {
+        repository.clearCryptocurrencies()
+        verify(localDataSource).clearCryptocurrencies()
+        verifyNoMoreInteractions(localDataSource)
+    }
 }
