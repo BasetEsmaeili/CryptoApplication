@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     id(Dependencies.Plugins.androidLibrary)
     id(Dependencies.Plugins.serialization)
@@ -15,6 +17,8 @@ android {
         versionCode = Dependencies.Project.versionCode
         versionName = Dependencies.Project.versionName
         testInstrumentationRunner = Dependencies.Project.testInstrumentationRunner
+        val api_key = gradleLocalProperties(rootDir).getProperty("api_key")
+        buildConfigField("String", "API_KEY", "\"$api_key\"")
     }
 
     lintOptions {
@@ -59,6 +63,10 @@ android {
 
     packagingOptions {
         exclude(Dependencies.Excludes.coroutines_debug)
+        exclude(Dependencies.Excludes.meta_inf_2)
+        exclude(Dependencies.Excludes.meta_inf_2_1)
+        exclude(Dependencies.Excludes.attach_hotspot_windows)
+        exclude(Dependencies.Excludes.licenses)
     }
 
     kapt {
@@ -70,6 +78,7 @@ dependencies {
     implementation(Dependencies.Kotlin.kotlinStd)
     implementation(Dependencies.Kotlin.coroutines)
     implementation(Dependencies.Kotlin.serialization)
+    implementation(Dependencies.ArchitectureComponents.liveData_extensions)
     androidTestImplementation(Dependencies.TestDevelopment.test_runner)
     androidTestImplementation(Dependencies.TestDevelopment.test_rules)
     androidTestImplementation(Dependencies.TestDevelopment.espresso)

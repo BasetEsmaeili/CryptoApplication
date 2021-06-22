@@ -10,12 +10,6 @@ data class CryptocurrencyDetailEntity(
     val logo: String,
     val subreddit: String,
     val notice: String,
-    val tags: List<String>,
-    val tagNames: List<String>,
-    val tagGroups: List<String>,
-    val urls: UrlListEntity,
-    val platform: PlatformEntity? = null,
     val dateAdded: String,
-    val twitterUsername: String,
-    val isHidden: Boolean
+    val twitterUsername: String
 )

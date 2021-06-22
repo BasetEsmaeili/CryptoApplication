@@ -115,4 +115,6 @@ dependencies {
     kapt(Dependencies.Dagger.dagger_compiler)
     implementation(Dependencies.ThirdParty.glide)
     kapt(Dependencies.ThirdParty.glide_compiler)
+    implementation(project(Dependencies.Modules.data))
+    implementation(project(Dependencies.Modules.domain))
 }

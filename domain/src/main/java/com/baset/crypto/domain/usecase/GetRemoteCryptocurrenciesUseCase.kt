@@ -11,6 +11,13 @@ class GetRemoteCryptocurrenciesUseCase @Inject constructor(private val repositor
     BaseUseCase<Result<List<CryptocurrencyEntity?>>, GetRemoteCryptocurrenciesParams>() {
     override suspend fun create(params: GetRemoteCryptocurrenciesParams?): Result<List<CryptocurrencyEntity?>> {
         if (params == null) throw IllegalArgumentException("GetRemoteCryptocurrenciesParams must not be null")
-        return repository.getCryptocurrencies(params.page, params.pageLimit)
+        return repository.getCryptocurrencies(
+            params.page,
+            params.pageLimit,
+            params.sortBy,
+            params.sortDirection,
+            params.cryptocurrencyType,
+            params.tagType
+        )
     }
 }

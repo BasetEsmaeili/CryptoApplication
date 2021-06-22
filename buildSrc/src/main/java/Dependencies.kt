@@ -13,7 +13,7 @@ object Dependencies {
     private const val junit_version = "4.12"
     private const val android_core_test_version = "1.3.0"
     private const val robolectric_version = "4.3.1"
-    private const val room_version = "2.4.0-alpha03"
+    private const val room_version = "2.3.0"
     private const val recyclerview_version = "1.2.1"
     private const val lottie_version = "3.7.0"
     private const val timber_version = "4.7.1"
@@ -167,6 +167,10 @@ object Dependencies {
 
     object Excludes {
         const val coroutines_debug = "DebugProbesKt.bin"
+        const val meta_inf_2 = "META-INF/AL2.0"
+        const val meta_inf_2_1 = "META-INF/LGPL2.1"
+        const val attach_hotspot_windows = "**/attach_hotspot_windows.dll"
+        const val licenses = "META-INF/licenses/**"
     }
 
     object BuildVariants {
