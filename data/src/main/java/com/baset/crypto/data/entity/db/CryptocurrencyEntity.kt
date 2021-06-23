@@ -14,7 +14,7 @@ data class CryptocurrencyEntity(
     val name: String,
     val symbol: String,
     @ColumnInfo(name = QUOTE_COIN_MARKET_RANK)
-    val coinMarketRank: Int,
+    val marketCap: Double,
     val usdPrice:Double,
     @ColumnInfo(name = PERCENT_CHANGE_24H)
     val percentChange24h: Double

@@ -14,7 +14,7 @@ class CryptocurrencyEntityListToDbCryptocurrencyEntityListMapper @Inject constru
                 it.id,
                 it.name,
                 it.symbol,
-                it.coinMarketRank,
+                it.quote.usd.marketCap,
                 it.quote.usd.price,
                 it.quote.usd.percentChange24h
             )
@@ -27,8 +27,7 @@ class CryptocurrencyEntityListToDbCryptocurrencyEntityListMapper @Inject constru
                 it.id,
                 it.name,
                 it.symbol,
-                it.coinMarketRank,
-                QuoteEntity(QuoteTypeEntity(it.usdPrice, it.percentChange24h))
+                QuoteEntity(QuoteTypeEntity(it.usdPrice, it.percentChange24h,it.marketCap))
             )
         }
     }
