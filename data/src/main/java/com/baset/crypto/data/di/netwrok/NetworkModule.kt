@@ -1,6 +1,7 @@
 package com.baset.crypto.data.di.netwrok
 
 import com.baset.crypto.data.common.DataConstants.NetworkConfig.BASE_URL
+import com.baset.crypto.data.source.remote.ApiService
 import com.baset.crypto.data.utils.network.AuthInterceptor
 import com.baset.crypto.data.utils.network.NetworkCheckInterceptor
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
@@ -32,6 +33,13 @@ object NetworkModule {
                 encodeDefaults = true
             }.asConverterFactory("application/json".toMediaType()))
             .build()
+    }
+
+    @Provides
+    @JvmStatic
+    @NetworkScope
+    fun provideApiService(retrofit: Lazy<Retrofit>): ApiService {
+        return retrofit.get().create(ApiService::class.java)
     }
 
     @Provides

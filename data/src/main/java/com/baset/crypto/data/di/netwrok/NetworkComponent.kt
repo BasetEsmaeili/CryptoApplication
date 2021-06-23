@@ -1,6 +1,7 @@
 package com.baset.crypto.data.di.netwrok
 
 import android.content.Context
+import com.baset.crypto.data.source.remote.ApiService
 import com.baset.crypto.data.utils.network.AuthInterceptor
 import com.baset.crypto.data.utils.network.NetworkCheckInterceptor
 import com.baset.crypto.data.utils.network.NetworkManager
@@ -24,6 +25,7 @@ interface NetworkComponent {
     fun provideNetworkInterceptor(): NetworkCheckInterceptor
     fun provideNetworkManager(): NetworkManager
     fun provideResponseHandler(): ResponseHandler
+    fun provideApiService(): ApiService
 
     @Component.Factory
     interface Factory {

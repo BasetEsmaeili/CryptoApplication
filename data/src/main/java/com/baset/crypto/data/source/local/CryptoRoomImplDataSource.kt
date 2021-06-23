@@ -1,7 +1,7 @@
 package com.baset.crypto.data.source.local
 
-import com.baset.crypto.data.mapper.CryptocurrencyDetailEntityToDbCryptocurrencyEntityMapper
-import com.baset.crypto.data.mapper.CryptocurrencyEntityListToDbCryptocurrencyEntityListMapper
+import com.baset.crypto.data.mapper.DbCryptocurrencyDetailEntityToCryptocurrencyDeatilEntityMapper
+import com.baset.crypto.data.mapper.DbCryptocurrencyEntityListToCryptocurrencyEntityListMapper
 import com.baset.crypto.domain.entity.CryptocurrencyDetailEntity
 import com.baset.crypto.domain.entity.CryptocurrencyEntity
 import com.baset.crypto.domain.source.CryptoLocalDataSource
@@ -11,8 +11,8 @@ import javax.inject.Inject
 
 class CryptoRoomImplDataSource @Inject constructor(
     private val cryptoDAO: CryptoDAO,
-    private val cryptocurrencyMapper: CryptocurrencyEntityListToDbCryptocurrencyEntityListMapper,
-    private val cryptoDetailMapper: CryptocurrencyDetailEntityToDbCryptocurrencyEntityMapper
+    private val cryptocurrencyMapper: DbCryptocurrencyEntityListToCryptocurrencyEntityListMapper,
+    private val cryptoDetailMapper: DbCryptocurrencyDetailEntityToCryptocurrencyDeatilEntityMapper
 ) : CryptoLocalDataSource {
     override suspend fun insertCryptocurrencies(cryptocurrencies: List<CryptocurrencyEntity?>) {
         cryptoDAO.insertOrUpdateCryptocurrencies(cryptocurrencyMapper.mapToEntity(cryptocurrencies))

@@ -4,7 +4,7 @@ import com.baset.crypto.data.entity.db.CryptocurrencyDetailEntity
 import com.baset.crypto.domain.base.EntityMapper
 import javax.inject.Inject
 
-class CryptocurrencyDetailEntityToDbCryptocurrencyEntityMapper @Inject constructor() :
+class DbCryptocurrencyDetailEntityToCryptocurrencyDeatilEntityMapper @Inject constructor() :
     EntityMapper<CryptocurrencyDetailEntity?, com.baset.crypto.domain.entity.CryptocurrencyDetailEntity?> {
     override fun mapToEntity(entity: com.baset.crypto.domain.entity.CryptocurrencyDetailEntity?): CryptocurrencyDetailEntity? {
         return if (entity != null) CryptocurrencyDetailEntity(

@@ -2,23 +2,32 @@ package com.baset.crypto.trader.di.app
 
 import com.baset.crypto.data.di.local.LocalStorageComponent
 import com.baset.crypto.data.di.netwrok.NetworkComponent
+import com.baset.crypto.domain.repository.CryptoRepository
+import com.baset.crypto.domain.source.CryptoLocalDataSource
+import com.baset.crypto.domain.source.CryptoRemoteDataSource
 import com.baset.crypto.trader.CryptoApplication
-import dagger.BindsInstance
+import com.baset.crypto.trader.utils.threading.DispatcherProvider
 import dagger.Component
-import javax.inject.Singleton
+import javax.inject.Scope
 
-@Singleton
-@Component(modules = [AppBindsModule::class])
+@Scope
+@Retention(AnnotationRetention.RUNTIME)
+annotation class AppScope
+
+@AppScope
+@Component(modules = [AppBindsModule::class],dependencies = [LocalStorageComponent::class,NetworkComponent::class])
 interface AppComponent {
     fun inject(app: CryptoApplication)
-    fun provideLocalStorageComponent(): LocalStorageComponent
-    fun provideNetworkComponent(): NetworkComponent
+    fun provideCryptoRepository(): CryptoRepository
+    fun provideCryptoLocalDataSource(): CryptoLocalDataSource
+    fun provideCryptoRemoteDataSource(): CryptoRemoteDataSource
+    fun provideDispatcherProvider(): DispatcherProvider
 
     @Component.Factory
     interface Factory {
         fun create(
-            @BindsInstance localStorageComponent: LocalStorageComponent,
-            @BindsInstance networkComponent: NetworkComponent
+             localStorageComponent: LocalStorageComponent,
+             networkComponent: NetworkComponent
         ): AppComponent
     }
 }
