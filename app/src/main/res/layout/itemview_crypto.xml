@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_stn"
+        android:layout_marginTop="@dimen/margin_stn"
+        android:layout_marginEnd="@dimen/margin_stn"
+        app:cardElevation="@dimen/elevation_crypto_item">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/margin_medium"
+            android:paddingTop="24dp"
+            android:paddingEnd="@dimen/margin_medium"
+            android:paddingBottom="24dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_symbol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="BTC" />
+
+            <View
+                android:id="@+id/view_symbol_divider"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/margin_stn"
+                android:background="@android:color/black"
+                app:layout_constraintBottom_toBottomOf="@id/tv_symbol"
+                app:layout_constraintStart_toEndOf="@id/tv_symbol"
+                app:layout_constraintTop_toTopOf="@id/tv_symbol" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_stn"
+                android:textColor="@android:color/black"
+                app:layout_constraintBottom_toBottomOf="@id/tv_symbol"
+                app:layout_constraintStart_toEndOf="@id/view_symbol_divider"
+                app:layout_constraintTop_toTopOf="@+id/tv_symbol"
+                tools:text="Bitcoin" />
+
+            <View
+                android:id="@+id/view_center_divider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:background="@color/bg_divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_symbol" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_symbol"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_symbol"
+                tools:text="6070.67$" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_last_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="@dimen/margin_stn"
+                android:textColor="@android:color/black"
+                app:layout_constraintStart_toStartOf="@+id/view_center_divider"
+                app:layout_constraintTop_toBottomOf="@id/view_center_divider"
+                tools:text="24h:" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_market_cap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:textColor="@android:color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_last_update"
+                app:layout_constraintEnd_toEndOf="@+id/view_center_divider"
+                app:layout_constraintTop_toTopOf="@+id/tv_last_update"
+                tools:text="MarketCap:" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
