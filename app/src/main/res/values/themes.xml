@@ -4,13 +4,44 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/purple_500</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/bg_status_bar</item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="CustomBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="BottomSheetTopLine">
+        <item name="android:layout_width">@dimen/width_dialog_top_line</item>
+        <item name="android:layout_height">@dimen/height_dialog_top_line</item>
+        <item name="android:layout_marginTop">@dimen/margin_top_dialog_top_line_</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@drawable/shape_bottom_dialog_top_line</item>
+    </style>
+
+
+    <style name="BottomSheetTitleTextStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/gray_850</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/size_dialog_title_text</item>
+    </style>
+
+    <style name="ChipItemStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="checkedIconVisible">true</item>
+        <item name="checkedIconTint">@android:color/white</item>
+        <item name="chipBackgroundColor">@color/bg_chip_item</item>
     </style>
 </resources>

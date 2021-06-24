@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_bottom_sheet_dialog"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/padding_medium"
+        android:paddingEnd="@dimen/padding_medium"
+        android:paddingBottom="32dp">
+
+        <View
+            android:id="@+id/bottom_sheet_top_line"
+            style="@style/BottomSheetTopLine" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_bottom_sheet_title"
+            style="@style/BottomSheetTitleTextStyle"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:text="@string/title_sort_and_filter" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_stn"
+            android:text="@string/label_sort_by" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/ch_group_sort_by"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_market_cap"
+                style="@style/ChipItemStyle"
+                android:text="@string/label_market_cap" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_name"
+                style="@style/ChipItemStyle"
+                android:text="@string/label_name" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_price"
+                style="@style/ChipItemStyle"
+                android:text="@string/label_price" />
+        </com.google.android.material.chip.ChipGroup>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_stn"
+            android:text="@string/label_sort_direction" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/ch_group_sort_direction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_ascending"
+                style="@style/ChipItemStyle"
+                android:text="@string/label_ascending" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_descending"
+                style="@style/ChipItemStyle"
+                android:text="@string/label_descending" />
+        </com.google.android.material.chip.ChipGroup>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_stn"
+            android:text="@string/label_crypto_type" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/ch_group_crypto_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_crypto_all"
+                style="@style/ChipItemStyle"
+                android:text="@string/label_all" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_coins"
+                style="@style/ChipItemStyle"
+                android:text="@string/label_coins" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_tokens"
+                style="@style/ChipItemStyle"
+                android:text="@string/label_tokens" />
+        </com.google.android.material.chip.ChipGroup>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_stn"
+            android:text="@string/label_tag_type" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/ch_group_tag_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_tag_all"
+                style="@style/ChipItemStyle"
+                android:text="@string/label_all" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_defi"
+                style="@style/ChipItemStyle"
+                android:text="@string/label_defi" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_file_sharing"
+                style="@style/ChipItemStyle"
+                android:text="@string/label_file_sharing" />
+        </com.google.android.material.chip.ChipGroup>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fab_done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_stn"
+            android:gravity="center"
+            android:text="@string/label_done"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:icon="@drawable/ic_baseline_done_24"
+            app:iconGravity="textStart"
+            android:layout_marginBottom="@dimen/margin_stn"
+            app:iconPadding="0dp"
+            app:iconTint="@color/white" />
+    </LinearLayout>
+</layout>

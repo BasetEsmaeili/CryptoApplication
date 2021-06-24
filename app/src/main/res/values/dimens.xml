@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="size_app_name_text">32sp</dimen>
+    <dimen name="elevation_crypto_item">8dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="margin_stn">8dp</dimen>
+    <dimen name="margin_mini">4dp</dimen>
+    <dimen name="size_dialog_title_text">12sp</dimen>
+    <dimen name="width_dialog_top_line">100dp</dimen>
+    <dimen name="height_dialog_top_line">5dp</dimen>
+    <dimen name="margin_top_dialog_top_line_">5dp</dimen>
+    <dimen name="size_empty_state_text">26sp</dimen>
+</resources>

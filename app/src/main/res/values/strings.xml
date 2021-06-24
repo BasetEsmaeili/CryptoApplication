@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">CryptoTrader</string>
+    <string name="error_during_action">خطا در انجام عملیات</string>
+    <string name="label_twenty_four_hour">24h:</string>
+    <string name="label_price_unit">$</string>
+    <string name="label_market_cap_with_colon">MarketCap:</string>
+    <string name="error_no_connection">No Internet Connection</string>
+    <string name="error_request_timeout">Request Timeout</string>
+    <string name="error_unauthorized">UnAuthorized Please Check Api Key</string>
+    <string name="error_bad_request">Bad Request</string>
+    <string name="error_forbidden">Access Denied</string>
+    <string name="error_to_many_request">To Many Request Please TryAgain</string>
+    <string name="error_server_error">Internal Server Error</string>
+    <string name="title_sort_and_filter">Sort and Filter</string>
+    <string name="label_sort_by">Sort By</string>
+    <string name="label_market_cap">Market Cap</string>
+    <string name="label_name">Name</string>
+    <string name="label_price">Price</string>
+    <string name="label_filter_by">Filter By</string>
+    <string name="label_crypto_type">Crypto Type</string>
+    <string name="label_all">All</string>
+    <string name="label_coins">Coins</string>
+    <string name="label_tokens">Tokens</string>
+    <string name="label_tag_type">Tag Type</string>
+    <string name="label_file_sharing">File Sharing</string>
+    <string name="label_defi">Defi</string>
+    <string name="label_ascending">Ascending</string>
+    <string name="label_descending">Descending</string>
+    <string name="label_sort_direction">Sort Direction</string>
+    <string name="label_done">Done</string>
+    <string name="label_no_result_found">No Result Found</string>
 </resources>

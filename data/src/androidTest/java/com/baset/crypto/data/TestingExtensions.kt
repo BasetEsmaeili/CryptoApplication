@@ -7,12 +7,12 @@ fun createDbCryptocurrencyEntity(
     id: Long = 1,
     name: String = "Bitcoin",
     symbol: String = "BTC",
-    coinMarketRank: Int = 5,
     price: Double = 9283.92,
-    volume24h: Double = 715568.0000
+    volume24h: Double = 715568.0000,
+    marketCap: Double = 232276569366.00534
 ): CryptocurrencyEntity {
     return CryptocurrencyEntity(
-        id, name, symbol, coinMarketRank, price, volume24h
+        id, name, symbol,marketCap , price, volume24h
     )
 }
 

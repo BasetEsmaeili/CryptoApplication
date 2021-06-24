@@ -11,7 +11,6 @@ import com.baset.crypto.data.createDbCryptocurrencyEntity
 import com.baset.crypto.data.utils.getOrAwaitValue
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.After
@@ -58,7 +57,7 @@ class CryptoDAOTest {
     fun updateCryptocurrency() = dispatcher.runBlockingTest {
         val oldCrypto = createDbCryptocurrencyEntity()
         val newCrypto =
-            createDbCryptocurrencyEntity(name = "Bitco", symbol = "btc", coinMarketRank = 8)
+            createDbCryptocurrencyEntity(name = "Bitco", symbol = "btc")
         cryptoDAO.insertCryptocurrency(oldCrypto)
         cryptoDAO.updateCryptocurrency(newCrypto)
         val result = cryptoDAO.getCryptocurrencies().asLiveData().getOrAwaitValue()[0]

@@ -2,8 +2,8 @@ package com.baset.crypto.data.source.local
 
 import com.baset.crypto.data.createCryptocurrencyDetailEntity
 import com.baset.crypto.data.createCryptocurrencyEntity
-import com.baset.crypto.data.mapper.CryptocurrencyDetailEntityToDbCryptocurrencyEntityMapper
-import com.baset.crypto.data.mapper.CryptocurrencyEntityListToDbCryptocurrencyEntityListMapper
+import com.baset.crypto.data.mapper.DbCryptocurrencyDetailEntityToCryptocurrencyDeatilEntityMapper
+import com.baset.crypto.data.mapper.DbCryptocurrencyEntityListToCryptocurrencyEntityListMapper
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
@@ -16,10 +16,10 @@ import org.mockito.kotlin.verifyNoMoreInteractions
 @ExperimentalCoroutinesApi
 class CryptoRoomImplDataSourceTest {
     private val cryptoDAO: CryptoDAO = mock()
-    private val cryptocurrencyMapper: CryptocurrencyEntityListToDbCryptocurrencyEntityListMapper =
-        CryptocurrencyEntityListToDbCryptocurrencyEntityListMapper()
-    private val cryptoDetailMapper: CryptocurrencyDetailEntityToDbCryptocurrencyEntityMapper =
-        CryptocurrencyDetailEntityToDbCryptocurrencyEntityMapper()
+    private val cryptocurrencyMapper: DbCryptocurrencyEntityListToCryptocurrencyEntityListMapper =
+        DbCryptocurrencyEntityListToCryptocurrencyEntityListMapper()
+    private val cryptoDetailMapper: DbCryptocurrencyDetailEntityToCryptocurrencyDeatilEntityMapper =
+        DbCryptocurrencyDetailEntityToCryptocurrencyDeatilEntityMapper()
     private val source: CryptoRoomImplDataSource =
         CryptoRoomImplDataSource(cryptoDAO, cryptocurrencyMapper, cryptoDetailMapper)
 

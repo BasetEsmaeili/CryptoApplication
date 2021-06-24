@@ -6,7 +6,7 @@ import com.baset.crypto.domain.entity.QuoteEntity
 import com.baset.crypto.domain.entity.QuoteTypeEntity
 import javax.inject.Inject
 
-class CryptocurrencyEntityListToDbCryptocurrencyEntityListMapper @Inject constructor() :
+class DbCryptocurrencyEntityListToCryptocurrencyEntityListMapper @Inject constructor() :
     EntityMapper<List<CryptocurrencyEntity?>, List<com.baset.crypto.domain.entity.CryptocurrencyEntity?>> {
     override fun mapToEntity(entity: List<com.baset.crypto.domain.entity.CryptocurrencyEntity?>): List<CryptocurrencyEntity> {
         return entity.filterNotNull().map {
@@ -14,7 +14,7 @@ class CryptocurrencyEntityListToDbCryptocurrencyEntityListMapper @Inject constru
                 it.id,
                 it.name,
                 it.symbol,
-                it.coinMarketRank,
+                it.quote.usd.marketCap,
                 it.quote.usd.price,
                 it.quote.usd.percentChange24h
             )
@@ -27,8 +27,7 @@ class CryptocurrencyEntityListToDbCryptocurrencyEntityListMapper @Inject constru
                 it.id,
                 it.name,
                 it.symbol,
-                it.coinMarketRank,
-                QuoteEntity(QuoteTypeEntity(it.usdPrice, it.percentChange24h))
+                QuoteEntity(QuoteTypeEntity(it.usdPrice, it.percentChange24h,it.marketCap))
             )
         }
     }

@@ -49,13 +49,12 @@ fun createCryptocurrencyEntity(
     id: Long = 1,
     name: String = "Bitcoin",
     symbol: String = "BTC",
-    coinMarketRank: Int = 5,
     quote: QuoteEntity = createQuoteEntity()
 ): CryptocurrencyEntity {
     return CryptocurrencyEntity(
         id,
         name,
-        symbol, coinMarketRank, quote
+        symbol, quote
     )
 }
 
@@ -65,11 +64,13 @@ fun createQuoteEntity(type: QuoteTypeEntity = createQuoteTypeEntity()): QuoteEnt
 
 fun createQuoteTypeEntity(
     price: Double = 9283.92,
-    volume24h: Double = 715568.0000
+    volume24h: Double = 715568.0000,
+    marketCap: Double = 232276569366.00534
 ): QuoteTypeEntity {
     return QuoteTypeEntity(
         price,
         volume24h,
+        marketCap
     )
 }
 
@@ -139,13 +140,12 @@ fun createCryptocurrencyResponse(
     id: Long = 1,
     name: String = "Bitcoin",
     symbol: String = "BTC",
-    coinMarketRank: Int = 5,
     quote: QuoteResponse = createQuoteResponse()
 ): CryptocurrencyResponse {
     return CryptocurrencyResponse(
         id,
         name,
-        symbol, coinMarketRank, quote
+        symbol, quote
     )
 }
 
@@ -155,10 +155,12 @@ fun createQuoteResponse(type: QuoteTypeResponse = createQuoteTypeResponse()): Qu
 
 fun createQuoteTypeResponse(
     price: Double = 9283.92,
-    volume24h: Double = 715568.0000
+    volume24h: Double = 715568.0000,
+    marketCap: Double = 232276569366.00534
 ): QuoteTypeResponse {
     return QuoteTypeResponse(
         price,
         volume24h,
+        marketCap
     )
 }

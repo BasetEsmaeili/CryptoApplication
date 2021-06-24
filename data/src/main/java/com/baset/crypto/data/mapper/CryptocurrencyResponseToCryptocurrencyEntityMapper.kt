@@ -13,7 +13,6 @@ class CryptocurrencyResponseToCryptocurrencyEntityMapper @Inject constructor(
             entity.id,
             entity.name,
             entity.symbol,
-            entity.coinMarketRank,
             quoteMapper.mapToEntity(entity.quote)
         )
     }
@@ -23,7 +22,6 @@ class CryptocurrencyResponseToCryptocurrencyEntityMapper @Inject constructor(
             entity.id,
             entity.name,
             entity.symbol,
-            entity.coinMarketRank,
             quoteMapper.mapFromEntity(entity.quote)
         )
     }

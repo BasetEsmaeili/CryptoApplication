@@ -1,7 +1,6 @@
 package com.baset.crypto.data.source.remote
 
 import com.baset.crypto.data.createCryptocurrenciesResponse
-import com.baset.crypto.data.createCryptocurrencyDetailResponse
 import com.baset.crypto.data.createCryptocurrencyDetailsResponse
 import com.baset.crypto.data.createRemoteCryptocurrenciesParams
 import com.baset.crypto.data.entity.CryptocurrenciesResponse
