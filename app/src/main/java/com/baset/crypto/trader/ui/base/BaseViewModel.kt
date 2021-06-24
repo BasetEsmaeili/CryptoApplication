@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 open class BaseViewModel : ViewModel() {
-    private val _isShowLoading = MutableLiveData<Boolean>()
+    private val _isShowLoading = MutableLiveData(false)
     val isShowLoading: LiveData<Boolean> get() = _isShowLoading
 
     fun setLoadingState(isShowLoading: Boolean, emitOnUiThread: Boolean = true) {

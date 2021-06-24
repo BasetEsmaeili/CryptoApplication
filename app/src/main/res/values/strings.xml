@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">CryptoTrader</string>
     <string name="error_during_action">خطا در انجام عملیات</string>
+    <string name="label_twenty_four_hour">24h:</string>
+    <string name="label_price_unit">$</string>
+    <string name="label_market_cap">MarketCap:</string>
+    <string name="error_no_connection">No Internet Connection</string>
+    <string name="error_request_timeout">Request Timeout</string>
+    <string name="error_unauthorized">UnAuthorized Please Check Api Key</string>
+    <string name="error_bad_request">Bad Request</string>
+    <string name="error_forbidden">Access Denied</string>
+    <string name="error_to_many_request">To Many Request Please TryAgain</string>
+    <string name="error_server_error">Internal Server Error</string>
 </resources>

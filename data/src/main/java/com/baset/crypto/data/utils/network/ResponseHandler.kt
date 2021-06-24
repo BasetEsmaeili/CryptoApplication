@@ -3,7 +3,6 @@ package com.baset.crypto.data.utils.network
 import com.baset.crypto.data.entity.BaseResponse
 import com.baset.crypto.domain.entity.ErrorCode
 import com.baset.crypto.data.entity.ErrorResponse
-import com.baset.crypto.data.utils.errorLog
 import com.baset.crypto.data.utils.exceptions.NoConnectionException
 import com.baset.crypto.domain.entity.ErrorEntity
 import com.baset.crypto.domain.entity.Result
@@ -36,7 +35,6 @@ class ResponseHandler @Inject constructor() {
             is NoConnectionException -> Result.error(ErrorEntity.ApiError.NoNetwork)
             is SocketTimeoutException -> Result.error(ErrorEntity.ApiError.Timeout)
             else -> {
-                errorLog<ResponseHandler>(throwable)
                 Result.error(
                     ErrorEntity.ApiError.Unknown(
                         throwable.message,
@@ -55,7 +53,6 @@ class ResponseHandler @Inject constructor() {
                     .toSerializableModel<ErrorResponse>()
             }
         } catch (exception: Exception) {
-            errorLog<ResponseHandler>(throwable)
             null
         }
     }

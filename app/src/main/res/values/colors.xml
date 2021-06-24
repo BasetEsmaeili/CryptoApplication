@@ -8,4 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="bg_divider">#80E1E0E0</color>
+    <color name="bg_status_bar">#E4E4E4</color>
+    <color name="negative_percent">#F33131</color>
+    <color name="positive_percent">#08D8C5</color>
 </resources>

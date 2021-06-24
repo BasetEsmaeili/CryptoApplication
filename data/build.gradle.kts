@@ -95,7 +95,6 @@ dependencies {
     testImplementation(Dependencies.TestDevelopment.arch_core_test)
     testImplementation(Dependencies.TestDevelopment.coroutines_test)
     testImplementation(Dependencies.TestDevelopment.mockito_kotlin)
-    implementation(Dependencies.ThirdParty.timber)
     implementation(Dependencies.Dagger.dagger)
     kapt(Dependencies.Dagger.dagger_compiler)
     implementation(Dependencies.OkHttp.okhttp)

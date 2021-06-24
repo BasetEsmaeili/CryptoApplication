@@ -5,6 +5,13 @@
 
     <data>
 
+        <variable
+            name="model"
+            type="com.baset.crypto.trader.entity.Cryptocurrency" />
+
+        <variable
+            name="factory"
+            type="com.baset.crypto.trader.utils.factory.CryptoItemFactory" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -31,7 +38,7 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="BTC" />
+                tools:text="@{model.symbol}" />
 
             <View
                 android:id="@+id/view_symbol_divider"
@@ -48,6 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_stn"
+                android:text="@{model.name}"
                 android:textColor="@android:color/black"
                 app:layout_constraintBottom_toBottomOf="@id/tv_symbol"
                 app:layout_constraintStart_toEndOf="@id/view_symbol_divider"
@@ -67,6 +75,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{factory.formatPrice(model.quote.usd.price)}"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_symbol"
@@ -83,6 +92,7 @@
                 android:textColor="@android:color/black"
                 app:layout_constraintStart_toStartOf="@+id/view_center_divider"
                 app:layout_constraintTop_toBottomOf="@id/view_center_divider"
+                android:text="@{factory.formatPercentChange(model.quote.usd.percentChange24h)}"
                 tools:text="24h:" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -90,6 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="32dp"
+                android:text="@{factory.formatMarketCap(model.quote.usd.marketCap)}"
                 android:textColor="@android:color/black"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_last_update"
                 app:layout_constraintEnd_toEndOf="@+id/view_center_divider"

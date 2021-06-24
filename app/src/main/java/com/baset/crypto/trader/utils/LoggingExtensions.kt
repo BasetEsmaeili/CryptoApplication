@@ -1,4 +1,4 @@
-package com.baset.crypto.data.utils
+package com.baset.crypto.trader.utils
 
 import timber.log.Timber
 
