@@ -1,8 +1,7 @@
 package com.baset.crypto.trader.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -10,13 +9,8 @@ import com.baset.crypto.trader.R
 import com.baset.crypto.trader.databinding.ActivityMainBinding
 import com.baset.crypto.trader.di.app.findAppComponent
 import com.baset.crypto.trader.di.main.DaggerMainComponent
-import com.baset.crypto.trader.utils.factory.ViewModelFactory
-import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
-    private val viewModel: MainViewModel by viewModels { viewModelFactory }
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {

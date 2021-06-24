@@ -7,27 +7,32 @@ import com.baset.crypto.domain.entity.params.SortDirection
 import com.baset.crypto.domain.entity.params.TagFilterType
 import com.baset.crypto.trader.ui.base.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class SortAndFilterViewModel @Inject constructor() : BaseViewModel() {
-    val sortType = MutableStateFlow(CryptocurrencySortType.PRICE)
-    val sortDirection = MutableStateFlow(SortDirection.DESCENDING)
-    val cryptoType = MutableStateFlow(CryptocurrencyFilterType.ALL)
-    val tagType = MutableStateFlow(TagFilterType.ALL)
+    private val _sortType = MutableStateFlow(CryptocurrencySortType.PRICE)
+    val sortType: StateFlow<CryptocurrencySortType> by this::_sortType
+    private val _sortDirection = MutableStateFlow(SortDirection.DESCENDING)
+    val sortDirection: StateFlow<SortDirection> by this::_sortDirection
+    private val _cryptoType = MutableStateFlow(CryptocurrencyFilterType.ALL)
+    val cryptoType: StateFlow<CryptocurrencyFilterType> by this::_cryptoType
+    private val _tagType = MutableStateFlow(TagFilterType.ALL)
+    val tagType: StateFlow<TagFilterType> by this::_tagType
     fun setSortType(type: CryptocurrencySortType) = viewModelScope.launch {
-        sortType.emit(type)
+        _sortType.emit(type)
     }
 
     fun setSortDirection(direction: SortDirection) = viewModelScope.launch {
-        sortDirection.emit(direction)
+        _sortDirection.emit(direction)
     }
 
     fun setCryptoType(type: CryptocurrencyFilterType) = viewModelScope.launch {
-        cryptoType.emit(type)
+        _cryptoType.emit(type)
     }
 
     fun setTagType(type: TagFilterType) = viewModelScope.launch {
-        tagType.emit(type)
+        _tagType.emit(type)
     }
 }
