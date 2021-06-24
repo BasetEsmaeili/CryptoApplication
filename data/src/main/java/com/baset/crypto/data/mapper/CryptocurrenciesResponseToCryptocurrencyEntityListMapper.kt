@@ -18,7 +18,7 @@ class CryptocurrenciesResponseToCryptocurrencyEntityListMapper @Inject construct
     }
 
     override fun mapFromEntity(entity: CryptocurrenciesResponse?): List<CryptocurrencyEntity?> {
-        return entity?.data?.map { cryptocurrencyMapper.mapFromEntity(it) } ?: arrayListOf()
+        return entity?.data?.map { cryptocurrencyMapper.mapFromEntity(it) } ?: emptyList()
     }
 
 

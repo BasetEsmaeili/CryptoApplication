@@ -39,16 +39,11 @@ class CryptoListFragment :
     @Inject
     lateinit var networkManager: NetworkManager
     override val viewModel: CryptoListViewModel by viewModels { viewModelFactory }
-    private lateinit var adapter: CryptoListAdapter
+    private val adapter:CryptoListAdapter by lazy { CryptoListAdapter(cryptoItemFactory) }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         DaggerCryptoListComponent.builder().appComponent(findAppComponent()).build().inject(this)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        adapter = CryptoListAdapter(cryptoItemFactory)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
