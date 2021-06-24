@@ -29,6 +29,6 @@ class CryptoItemFactory @Inject constructor(private val context: Context) {
     }
 
     fun formatMarketCap(marketCap: Double): String {
-        return "${context.getString(R.string.label_market_cap)} ${marketCap.round(4)}"
+        return "${context.getString(R.string.label_market_cap_with_colon)} ${marketCap.round(4)}"
     }
 }

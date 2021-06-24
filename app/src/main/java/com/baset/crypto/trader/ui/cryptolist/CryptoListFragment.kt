@@ -4,9 +4,9 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.baset.crypto.data.utils.network.NetworkManager
@@ -16,9 +16,13 @@ import com.baset.crypto.trader.adapter.CryptoListAdapter
 import com.baset.crypto.trader.databinding.FragmentCryptoListBinding
 import com.baset.crypto.trader.di.app.findAppComponent
 import com.baset.crypto.trader.di.cryptolist.DaggerCryptoListComponent
+import com.baset.crypto.trader.entity.SortAndFilterParams
 import com.baset.crypto.trader.ui.base.BaseFragment
+import com.baset.crypto.trader.utils.Constants
 import com.baset.crypto.trader.utils.factory.CryptoItemFactory
 import com.baset.crypto.trader.utils.factory.ViewModelFactory
+import com.baset.crypto.trader.utils.getFragmentResult
+import com.baset.crypto.trader.utils.isVisible
 import com.baset.crypto.trader.utils.pagination.InfiniteScrollProvider
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -50,19 +54,87 @@ class CryptoListFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupCryptoList()
-        setupRecyclerViewScrollListener()
+        checkFilterAvailable()
+        setupListeners()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        loadCryptocurrencies()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getSortAndFilterResult()
+    }
+
+    private fun loadCryptocurrencies() {
+        if (networkManager.isNetworkAvailable())
+            viewModel.getCryptocurrencies()
+    }
+
+    private fun getSortAndFilterResult() {
+        getFragmentResult<SortAndFilterParams>(
+            R.id.fragment_crypto_list,
+            Constants.KEY_FILTER_PARAMS
+        ) {
+            if (isFilterParamsChanged(it)) {
+                setFilterParams(it)
+                viewModel.resetContent()
+                viewModel.getCryptocurrencies()
+            }
+        }
+    }
+
+    private fun setFilterParams(params: SortAndFilterParams) {
+        viewModel.setSortType(params.sortType)
+        viewModel.setSortDirection(params.sortDirection)
+        viewModel.setCryptoType(params.cryptoType)
+        viewModel.setTagType(params.tagType)
+    }
+
+    private fun isFilterParamsChanged(params: SortAndFilterParams): Boolean {
+        return params.sortType != viewModel.sortType.value
+                || params.sortDirection != viewModel.sortDirection.value
+                || params.cryptoType != viewModel.cryptoType.value
+                || params.tagType != viewModel.tagType.value
+    }
+
+    private fun setupListeners() {
+        binding.fabFilter.setOnClickListener {
+            findNavController().navigate(
+                CryptoListFragmentDirections.actionFragmentCryptoListToDialogSortAndFilter(
+                    SortAndFilterParams(
+                        viewModel.sortType.value,
+                        viewModel.sortDirection.value,
+                        viewModel.cryptoType.value,
+                        viewModel.tagType.value
+                    )
+                )
+            )
+        }
+    }
+
+    private fun checkFilterAvailable() {
+        binding.fabFilter.isVisible(networkManager.isNetworkAvailable())
     }
 
     override fun startObserve() {
         super.startObserve()
-        viewModel.cryptocurrencies.flowWithLifecycle(lifecycle, Lifecycle.State.RESUMED)
+        viewModel.cryptocurrencies.flowWithLifecycle(lifecycle)
             .onEach {
                 adapter.updateList(it)
+                setEmptyViewState(it.isNullOrEmpty())
             }.launchIn(lifecycleScope)
-        viewModel.errorEvent.flowWithLifecycle(lifecycle, Lifecycle.State.RESUMED)
+
+        viewModel.errorEvent.flowWithLifecycle(lifecycle)
             .onEach {
                 parseError(it)
             }.launchIn(lifecycleScope)
+
+        viewModel.isShowLoading.observe(viewLifecycleOwner) {
+            setLoadingState(it)
+        }
     }
 
     private fun parseError(errorEntity: ErrorEntity?) {
@@ -99,6 +171,11 @@ class CryptoListFragment :
     private fun setupCryptoList() {
         binding.rvCryptocurrencies.adapter = adapter
         binding.rvCryptocurrencies.setHasFixedSize(false)
+        setupCryptoListPagination()
+        setupCryptoListScrollListener()
+    }
+
+    private fun setupCryptoListPagination() {
         binding.rvCryptocurrencies.addOnScrollListener(object : InfiniteScrollProvider() {
 
             override fun isLastPage(): Boolean {
@@ -112,13 +189,34 @@ class CryptoListFragment :
         })
     }
 
-    private fun setupRecyclerViewScrollListener() {
+    private fun setupCryptoListScrollListener() {
         binding.rvCryptocurrencies.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 animateAppNameView((binding.rvCryptocurrencies.layoutManager as LinearLayoutManager).findFirstCompletelyVisibleItemPosition() == 0)
                 super.onScrolled(recyclerView, dx, dy)
             }
         })
+    }
+
+    private fun setEmptyViewState(isVisible: Boolean) {
+        if (isVisible)
+            binding.lottieEmptyView.playAnimation()
+        else {
+            binding.lottieEmptyView.progress = 0f
+            binding.lottieEmptyView.pauseAnimation()
+        }
+        binding.lottieEmptyView.isVisible(isVisible)
+        binding.tvEmptyState.isVisible(isVisible)
+    }
+
+    private fun setLoadingState(isVisible: Boolean) {
+        if (isVisible)
+            binding.lottieLoading.playAnimation()
+        else {
+            binding.lottieLoading.progress = 0f
+            binding.lottieLoading.pauseAnimation()
+        }
+        binding.lottieLoading.isVisible(isVisible)
     }
 
     private fun animateAppNameView(isVisible: Boolean) {

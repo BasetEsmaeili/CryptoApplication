@@ -9,5 +9,18 @@
         android:id="@+id/fragment_crypto_list"
         android:name="com.baset.crypto.trader.ui.cryptolist.CryptoListFragment"
         android:label="CryptoListFragment"
-        tools:layout="@layout/fragment_crypto_list" />
+        tools:layout="@layout/fragment_crypto_list">
+        <action
+            android:id="@+id/action_fragment_crypto_list_to_dialog_sort_and_filter"
+            app:destination="@id/dialog_sort_and_filter" />
+    </fragment>
+    <dialog
+        android:id="@+id/dialog_sort_and_filter"
+        android:name="com.baset.crypto.trader.ui.filter.SortAndFilterBottomSheet"
+        android:label="SortAndFilterBottomSheet"
+        tools:layout="@layout/dialog_sort_and_filter">
+        <argument
+            android:name="params"
+            app:argType="com.baset.crypto.trader.entity.SortAndFilterParams" />
+    </dialog>
 </navigation>

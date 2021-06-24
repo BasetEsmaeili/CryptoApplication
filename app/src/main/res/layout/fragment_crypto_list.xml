@@ -55,15 +55,37 @@
             app:tint="@color/white" />
 
         <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_loading"
             android:layout_width="match_parent"
             android:layout_height="240dp"
-            app:isVisible="@{viewModel.isShowLoading()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:lottie_autoPlay="true"
             app:lottie_fileName="progressbar.json"
             app:lottie_loop="true" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_fileName="empty.json"
+            app:lottie_loop="true" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_empty_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/label_no_result_found"
+            android:textColor="@color/black"
+            android:textSize="@dimen/size_empty_state_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lottie_empty_view" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

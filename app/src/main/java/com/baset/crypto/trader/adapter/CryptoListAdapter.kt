@@ -16,7 +16,14 @@ class CryptoListAdapter(private val cryptoItemFactory: CryptoItemFactory) :
     private val cryptoItemsList = arrayListOf<Cryptocurrency?>()
 
     fun updateList(list: List<Cryptocurrency?>) {
-        cryptoItemsList.addAll(list)
+        if (list.isNotEmpty()) {
+            cryptoItemsList.addAll(list)
+            super.submitList(cryptoItemsList)
+        }
+    }
+
+    fun clearList() {
+        cryptoItemsList.clear()
         super.submitList(cryptoItemsList)
     }
 
@@ -60,7 +67,7 @@ class CryptoListAdapter(private val cryptoItemFactory: CryptoItemFactory) :
             oldItem: Cryptocurrency,
             newItem: Cryptocurrency
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem == newItem
         }
     }
 }
