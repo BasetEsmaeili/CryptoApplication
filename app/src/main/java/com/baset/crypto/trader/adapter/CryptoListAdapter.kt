@@ -12,20 +12,7 @@ import com.baset.crypto.trader.utils.base.BaseViewHolder
 import com.baset.crypto.trader.utils.factory.CryptoItemFactory
 
 class CryptoListAdapter(private val cryptoItemFactory: CryptoItemFactory) :
-    ListAdapter<Cryptocurrency, CryptoListAdapter.CryptoListViewHolder>(CryptoListDiffUtil()) {
-    private val cryptoItemsList = arrayListOf<Cryptocurrency?>()
-
-    fun updateList(list: List<Cryptocurrency?>) {
-        if (list.isNotEmpty()) {
-            cryptoItemsList.addAll(list)
-            super.submitList(cryptoItemsList)
-        }
-    }
-
-    fun clearList() {
-        cryptoItemsList.clear()
-        super.submitList(cryptoItemsList)
-    }
+    ListAdapter<Cryptocurrency, CryptoListAdapter.CryptoListViewHolder>(CryptoDiffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CryptoListViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -53,21 +40,25 @@ class CryptoListAdapter(private val cryptoItemFactory: CryptoItemFactory) :
             binding.factory = factory
         }
     }
+}
 
-    class CryptoListDiffUtil : DiffUtil.ItemCallback<Cryptocurrency>() {
+object CryptoDiffUtil : DiffUtil.ItemCallback<Cryptocurrency>() {
 
-        override fun areItemsTheSame(
-            oldItem: Cryptocurrency,
-            newItem: Cryptocurrency
-        ): Boolean {
-            return oldItem.id == newItem.id
-        }
+    override fun areItemsTheSame(
+        oldItem: Cryptocurrency,
+        newItem: Cryptocurrency
+    ): Boolean {
+        return newItem == oldItem
+    }
 
-        override fun areContentsTheSame(
-            oldItem: Cryptocurrency,
-            newItem: Cryptocurrency
-        ): Boolean {
-            return oldItem == newItem
-        }
+    override fun areContentsTheSame(
+        oldItem: Cryptocurrency,
+        newItem: Cryptocurrency
+    ): Boolean {
+        return newItem.equalsContent(oldItem)
+    }
+
+    override fun getChangePayload(oldItem: Cryptocurrency, newItem: Cryptocurrency): Any {
+        return false
     }
 }

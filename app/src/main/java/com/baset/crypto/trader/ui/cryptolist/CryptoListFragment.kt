@@ -80,6 +80,7 @@ class CryptoListFragment :
         ) {
             if (isFilterParamsChanged(it)) {
                 setFilterParams(it)
+                adapter.submitList(emptyList())
                 viewModel.resetContent()
                 viewModel.getCryptocurrencies()
             }
@@ -123,7 +124,8 @@ class CryptoListFragment :
         super.startObserve()
         viewModel.cryptocurrencies.flowWithLifecycle(lifecycle)
             .onEach {
-                adapter.updateList(it)
+                val newList = adapter.currentList + it
+                adapter.submitList(newList)
                 setEmptyViewState(it.isNullOrEmpty())
             }.launchIn(lifecycleScope)
 

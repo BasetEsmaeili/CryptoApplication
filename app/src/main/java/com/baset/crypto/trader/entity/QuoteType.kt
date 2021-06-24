@@ -6,10 +6,10 @@ data class QuoteType(
     val marketCap: Double
 ) {
     override fun equals(other: Any?): Boolean {
-        return when (other) {
-            null -> false
-            is QuoteType -> price == other.price && percentChange24h == other.percentChange24h && marketCap == other.marketCap
-            else -> false
-        }
+        return other is QuoteType && price == other.price && percentChange24h == other.percentChange24h && marketCap == other.marketCap
+    }
+
+    override fun hashCode(): Int {
+        return super.hashCode()
     }
 }
