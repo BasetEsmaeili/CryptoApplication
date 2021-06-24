@@ -3,7 +3,6 @@ package com.baset.crypto.data.utils.network
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.net.NetworkRequest
 import android.os.Build
 import javax.inject.Inject
 
@@ -11,25 +10,6 @@ class NetworkManager @Inject constructor(context: Context) {
 
     private val connectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-
-    fun registerNetworkCallback(callback: ConnectivityManager.NetworkCallback) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-            connectivityManager.registerDefaultNetworkCallback(callback)
-        else {
-            connectivityManager.registerNetworkCallback(buildNetworkRequest(), callback)
-        }
-    }
-
-    fun unRegisterNetworkCallback(callback: ConnectivityManager.NetworkCallback) {
-        connectivityManager.unregisterNetworkCallback(callback)
-    }
-
-    private fun buildNetworkRequest(): NetworkRequest {
-        return NetworkRequest
-            .Builder()
-            .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
-            .build()
-    }
 
 
     fun isNetworkAvailable(): Boolean {

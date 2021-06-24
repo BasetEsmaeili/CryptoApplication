@@ -76,7 +76,7 @@ class SortAndFilterBottomSheet :
     private fun getSelectedTagTypeItem(): Int {
         return when (args.params.tagType) {
             TagFilterType.ALL -> R.id.chip_tag_all
-            TagFilterType.DEFIDEFI -> R.id.chip_defi
+            TagFilterType.DEFI -> R.id.chip_defi
             TagFilterType.FILE_SHARING -> R.id.chip_file_sharing
             else -> 0
         }
@@ -116,7 +116,7 @@ class SortAndFilterBottomSheet :
             viewModel.setTagType(
                 when (checkedId) {
                     R.id.chip_tag_all -> TagFilterType.ALL
-                    R.id.chip_defi -> TagFilterType.DEFIDEFI
+                    R.id.chip_defi -> TagFilterType.DEFI
                     R.id.chip_file_sharing -> TagFilterType.FILE_SHARING
                     else -> TagFilterType.ALL
                 }

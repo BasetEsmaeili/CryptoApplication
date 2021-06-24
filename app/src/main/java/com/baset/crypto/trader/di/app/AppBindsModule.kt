@@ -19,7 +19,7 @@ abstract class AppBindsModule {
     abstract fun bindCryptoRepository(repositoryImpl: CryptoRepositoryImpl): CryptoRepository
 
     @Binds
-    abstract fun bindCryptoLocalRepository(source: CryptoRoomImplDataSource): CryptoLocalDataSource
+    abstract fun bindCryptoLocalDataSource(source: CryptoRoomImplDataSource): CryptoLocalDataSource
 
     @Binds
     abstract fun bindCryptoRemoteDataSource(source: CryptoRetrofitImplDataSource): CryptoRemoteDataSource
