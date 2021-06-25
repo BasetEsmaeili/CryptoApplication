@@ -20,8 +20,8 @@ class CryptoRoomImplDataSourceTest {
         DbCryptocurrencyEntityListToCryptocurrencyEntityListMapper()
     private val cryptoDetailMapper: DbCryptocurrencyDetailEntityToCryptocurrencyDeatilEntityMapper =
         DbCryptocurrencyDetailEntityToCryptocurrencyDeatilEntityMapper()
-    private val source: CryptoRoomImplDataSource =
-        CryptoRoomImplDataSource(cryptoDAO, cryptocurrencyMapper, cryptoDetailMapper)
+    private val source: CryptoRoomDataSourceImpl =
+        CryptoRoomDataSourceImpl(cryptoDAO, cryptocurrencyMapper, cryptoDetailMapper)
 
     @Before
     fun setUp() {

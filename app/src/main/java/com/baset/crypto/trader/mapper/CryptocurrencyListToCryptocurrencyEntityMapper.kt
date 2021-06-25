@@ -10,10 +10,10 @@ class CryptocurrencyListToCryptocurrencyEntityMapper @Inject constructor(
 ) :
     EntityMapper<List<Cryptocurrency?>?, List<CryptocurrencyEntity?>?> {
     override fun mapToEntity(entity: List<CryptocurrencyEntity?>?): List<Cryptocurrency?> {
-        return entity?.filterNotNull()?.map { cryptocurrencyMapper.mapToEntity(it) } ?: listOf()
+        return entity?.filterNotNull()?.map { cryptocurrencyMapper.mapToEntity(it) } ?: emptyList()
     }
 
     override fun mapFromEntity(entity: List<Cryptocurrency?>?): List<CryptocurrencyEntity?> {
-        return entity?.filterNotNull()?.map { cryptocurrencyMapper.mapFromEntity(it) } ?: listOf()
+        return entity?.filterNotNull()?.map { cryptocurrencyMapper.mapFromEntity(it) } ?: emptyList()
     }
 }

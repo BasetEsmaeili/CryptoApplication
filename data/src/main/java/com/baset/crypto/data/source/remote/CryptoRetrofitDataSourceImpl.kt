@@ -13,7 +13,7 @@ import com.baset.crypto.domain.entity.params.TagFilterType
 import com.baset.crypto.domain.source.CryptoRemoteDataSource
 import javax.inject.Inject
 
-class CryptoRetrofitImplDataSource @Inject constructor(
+class CryptoRetrofitDataSourceImpl @Inject constructor(
     private val apiService: ApiService,
     private val responseHandler: ResponseHandler,
     private val cryptocurrenciesMapper: CryptocurrenciesResponseToCryptocurrencyEntityListMapper,

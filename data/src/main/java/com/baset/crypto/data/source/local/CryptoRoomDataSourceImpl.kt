@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class CryptoRoomImplDataSource @Inject constructor(
+class CryptoRoomDataSourceImpl @Inject constructor(
     private val cryptoDAO: CryptoDAO,
     private val cryptocurrencyMapper: DbCryptocurrencyEntityListToCryptocurrencyEntityListMapper,
     private val cryptoDetailMapper: DbCryptocurrencyDetailEntityToCryptocurrencyDeatilEntityMapper

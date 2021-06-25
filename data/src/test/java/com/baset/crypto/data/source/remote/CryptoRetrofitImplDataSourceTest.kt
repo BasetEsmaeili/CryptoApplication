@@ -28,7 +28,7 @@ class CryptoRetrofitImplDataSourceTest {
         )
     private val cryptoDetailMapper: CryptocurrencyDetailsResponseToCryptocurrencyDetailEntityMapper =
         CryptocurrencyDetailsResponseToCryptocurrencyDetailEntityMapper()
-    private val source = CryptoRetrofitImplDataSource(
+    private val source = CryptoRetrofitDataSourceImpl(
         apiService,
         responseHandler,
         cryptocurrenciesMapper,

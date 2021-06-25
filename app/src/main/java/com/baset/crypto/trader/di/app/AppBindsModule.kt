@@ -2,8 +2,8 @@ package com.baset.crypto.trader.di.app
 
 import androidx.lifecycle.ViewModelProvider
 import com.baset.crypto.data.repository.CryptoRepositoryImpl
-import com.baset.crypto.data.source.local.CryptoRoomImplDataSource
-import com.baset.crypto.data.source.remote.CryptoRetrofitImplDataSource
+import com.baset.crypto.data.source.local.CryptoRoomDataSourceImpl
+import com.baset.crypto.data.source.remote.CryptoRetrofitDataSourceImpl
 import com.baset.crypto.domain.repository.CryptoRepository
 import com.baset.crypto.domain.source.CryptoLocalDataSource
 import com.baset.crypto.domain.source.CryptoRemoteDataSource
@@ -19,10 +19,10 @@ abstract class AppBindsModule {
     abstract fun bindCryptoRepository(repositoryImpl: CryptoRepositoryImpl): CryptoRepository
 
     @Binds
-    abstract fun bindCryptoLocalDataSource(source: CryptoRoomImplDataSource): CryptoLocalDataSource
+    abstract fun bindCryptoLocalDataSource(source: CryptoRoomDataSourceImpl): CryptoLocalDataSource
 
     @Binds
-    abstract fun bindCryptoRemoteDataSource(source: CryptoRetrofitImplDataSource): CryptoRemoteDataSource
+    abstract fun bindCryptoRemoteDataSource(source: CryptoRetrofitDataSourceImpl): CryptoRemoteDataSource
 
     @Binds
     abstract fun bindDispatcherProvider(appDispatcherProvider: AppDispatcherProvider): DispatcherProvider
