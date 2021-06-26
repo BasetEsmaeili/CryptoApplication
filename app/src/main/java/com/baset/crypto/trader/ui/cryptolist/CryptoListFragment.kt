@@ -55,7 +55,13 @@ class CryptoListFragment :
 
     override fun onStart() {
         super.onStart()
+        clearPreviousSortAndFilter()
         loadCryptocurrencies()
+    }
+
+    private fun clearPreviousSortAndFilter() {
+        if (networkManager.isNetworkAvailable())
+            viewModel.resetContent()
     }
 
     override fun onResume() {
@@ -121,7 +127,7 @@ class CryptoListFragment :
             .onEach {
                 val newList = adapter.currentList + it
                 adapter.submitList(newList)
-                setEmptyViewState(it.isNullOrEmpty())
+                setEmptyViewState(it.isNullOrEmpty() && viewModel.isShowLoading.value == false)
             }.launchIn(lifecycleScope)
 
         viewModel.errorEvent.flowWithLifecycle(lifecycle)

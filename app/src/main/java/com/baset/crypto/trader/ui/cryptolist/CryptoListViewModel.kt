@@ -26,7 +26,6 @@ class CryptoListViewModel @Inject constructor(
     private val dispatcher: DispatcherProvider
 ) : BaseViewModel() {
     val cryptocurrencies = getLocalCryptocurrenciesUseCase(dispatcher = dispatcher.io())
-        .onStart { setLoadingState(isShowLoading = true, emitOnUiThread = true) }
         .map { cryptocurrencyMapper.mapToEntity(it) }.distinctUntilChanged()
     val errorEvent = MutableStateFlow<ErrorEntity?>(null)
     val isLastPage = MutableStateFlow(false)
@@ -35,10 +34,6 @@ class CryptoListViewModel @Inject constructor(
     val cryptoType = MutableStateFlow(CryptocurrencyFilterType.ALL)
     val tagType = MutableStateFlow(TagFilterType.ALL)
     private var page = 0
-
-    init {
-        resetContent()
-    }
 
     fun getCryptocurrencies() {
         getCryptocurrencies(++page)
