@@ -127,6 +127,7 @@ class CryptoListFragment :
             .onEach {
                 val newList = adapter.currentList + it
                 adapter.submitList(newList)
+                viewModel.setLoadingState(false)
                 setEmptyViewState(it.isNullOrEmpty() && viewModel.isShowLoading.value == false)
             }.launchIn(lifecycleScope)
 
